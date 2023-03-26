@@ -1,10 +1,31 @@
-import React from 'react'
+import React, { useState, useEffect, useContext } from "react";
 
 //INTERNAL IMPORT
 import Style from "../styles/index.module.css";
-import { HeroSection, Service, BigNFTSilder, Subscribe, Title, Category, Filter, NFTCard, Collection, FollowerTab, AudioLive, Slider, Brand, } from '../components/componentsindex';
+import {
+  HeroSection,
+  Service,
+  BigNFTSilder,
+  Subscribe,
+  Title,
+  Category,
+  Filter,
+  NFTCard,
+  Collection,
+  AudioLive,
+  FollowerTab,
+  Slider,
+  Brand,
+  Video,
+  Loader,
+} from "../components/componentsindex";
+//import { getTopCreators } from "../TopCreators/TopCreators";
+
+//IMPORTING CONTRCT DATA
+import { NFTMarketplaceContext } from "../Context/NFTMarketplaceContext";
 
 const Home = () => {
+  
   return (
     <div className={Style.homePage}>
       <HeroSection />

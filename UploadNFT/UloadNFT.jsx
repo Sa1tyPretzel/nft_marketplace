@@ -14,7 +14,7 @@ import { Button } from "../components/componentsindex.js";
 import { DropZone } from "../UploadNFT/uploadNFTIndex.js";
 
 const UploadNFT = () => {
-  //const [price, setPrice] = useState("");
+  const [price, setPrice] = useState("");
   const [active, setActive] = useState(0);
   const [name, setName] = useState("");
   const [website, setWebsite] = useState("");
