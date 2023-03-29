@@ -13,7 +13,7 @@ import images from "../img";
 import { Button } from "../components/componentsindex.js";
 import { DropZone } from "../UploadNFT/uploadNFTIndex.js";
 
-const UploadNFT = () => {
+const UloadNFT = ({ uploadToIPFS, createNFT }) => {
   const [price, setPrice] = useState("");
   const [active, setActive] = useState(0);
   const [name, setName] = useState("");
@@ -23,9 +23,9 @@ const UploadNFT = () => {
   const [fileSize, setFileSize] = useState("");
   const [category, setCategory] = useState(0);
   const [properties, setProperties] = useState("");
-  //const [image, setImage] = useState(null);
+  const [image, setImage] = useState(null);
 
-  //const router = useRouter();
+  const router = useRouter();
 
   const categoryArry = [
     {
@@ -66,7 +66,8 @@ const UploadNFT = () => {
         royalties={royalties}
         fileSize={fileSize}
         category={category}
-        image={images.upload}
+        setImage={setImage}
+        uploadToIPFS={uploadToIPFS}
       />
 
 <div className={Style.upload_box}>
@@ -211,7 +212,20 @@ const UploadNFT = () => {
         <div className={Style.upload_box_btn}>
           <Button
             btnName="Upload"
-            handleClick={() => {}}
+            handleClick={async () =>
+              createNFT(
+                name,
+                price,
+                image,
+                description,
+                router
+                // website,
+                // royalties,
+                // fileSize,
+                // category,
+                // properties
+              )
+            }
             classStyle={Style.upload_box_btn_style}
           />
           <Button
@@ -225,4 +239,4 @@ const UploadNFT = () => {
   )
 }
 
-export default UploadNFT
+export default UloadNFT

@@ -23,7 +23,10 @@ const DropZone = ({
   const [fileUrl, setFileUrl] = useState(null);
 
   const onDrop = useCallback(async (acceptedFile) => {
-    setFileUrl(acceptedFile[0])
+    const url = await uploadToIPFS(acceptedFile[0]);
+    setFileUrl(url);
+    setImage(url);
+    console.log(url);
   });
 
   const { getRootProps, getInputProps } = useDropzone({
@@ -56,7 +59,7 @@ const DropZone = ({
       {fileUrl && (
         <aside className={Style.DropZone_box_aside}>
           <div className={Style.DropZone_box_aside_box}>
-            <Image src={images.nft_image_1} alt="nft image" width={200} height={200} />
+            <Image src={fileUrl} alt="nft image" width={200} height={200} />
 
             <div className={Style.DropZone_box_aside_box_preview}>
               <div className={Style.DropZone_box_aside_box_preview_one}>
