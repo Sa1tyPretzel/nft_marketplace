@@ -25,6 +25,30 @@ import {
 import { NFTMarketplaceContext } from "../Context/NFTMarketplaceContext";
 
 const Home = () => {
+  const { checkIfWalletConnected, currentAccount } = useContext(
+    NFTMarketplaceContext
+  );
+  useEffect(() => {
+    checkIfWalletConnected();
+  }, []);
+
+  const { fetchNFTs } = useContext(NFTMarketplaceContext);
+  const [nfts, setNfts] = useState([]);
+  const [nftsCopy, setNftsCopy] = useState([]);
+
+  useEffect(() => {
+    // if (currentAccount) {
+    fetchNFTs().then((items) => {
+      console.log(nfts);
+      setNfts(items.reverse());
+      setNftsCopy(items);
+    });
+    // }
+  }, []);
+
+  //CREATOR LIST
+
+  //const creators = getTopCreators(nfts);
   
   return (
     <div className={Style.homePage}>
@@ -52,7 +76,7 @@ const Home = () => {
         paragraph="Discover the most outstanding NFTs in all topics of life."
       />
       <Filter />
-      <NFTCard />
+      <NFTCard NFTData={nfts}/>
       <Title
         heading="Browse by category"
         paragraph="Explore the NFTs in the most featured categories."

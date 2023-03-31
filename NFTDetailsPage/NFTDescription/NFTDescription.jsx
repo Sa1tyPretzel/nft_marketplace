@@ -36,6 +36,8 @@ const NFTDescription = ({ nft }) => {
   const [provanance, setProvanance] = useState(false);
   const [owner, setOwner] = useState(false);
 
+  const router = useRouter();
+
   const historyArray = [
     images.user1,
     images.user2,
