@@ -19,13 +19,19 @@ const searchPage = () => {
   const [nfts, setNfts] = useState([]);
   const [nftsCopy, setNftsCopy] = useState([]);
 
-    useEffect(() => {
-      fetchNFTs().then((item) => {
-        setNfts(item.reverse());
-        setNftsCopy(item);
-        //console.log(nfts);
-        });
-    });
+  useEffect(() => {
+    try {
+      // if (currentAccount) {
+      fetchNFTs().then((items) => {
+        setNfts(items.reverse());
+        setNftsCopy(items);
+        console.log(nfts);
+      });
+      // }
+    } catch (error) {
+      setError("Please reload the browser", error);
+    }
+  }, []);
     
     const onHandleSearch = (value) => {
       const filteredNFTS = nfts.filter(({ name }) =>
@@ -64,7 +70,7 @@ const searchPage = () => {
         onClearSearch={onClearSearch}
       />
       <Filter />
-      {nfts.length == 0 ? <Loader /> : <NFTCardTwo NFTData={nfts} />}
+      <NFTCardTwo NFTData={nfts} />
       <Slider />
       <Brand />
     </div>
