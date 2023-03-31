@@ -34,10 +34,11 @@ const NFTCard = ({ NFTData }) => {
 
   return (
     <div className={Style.NFTCard}>
-        {NFTData.map((el, i) => (
+      {NFTData.map((el, i) => (
+        <Link href={{ pathname: "/NFT-details", query: el }}>
           <div className={Style.NFTCard_box} key={i + 1}>
             <div className={Style.NFTCard_box_img}>
-            <Image
+              <Image
                 src={el.image}
                 alt="NFT images"
                 width={600}
@@ -74,7 +75,9 @@ const NFTCard = ({ NFTData }) => {
             <div className={Style.NFTCard_box_update_details}>
               <div className={Style.NFTCard_box_update_details_price}>
                 <div className={Style.NFTCard_box_update_details_price_box}>
-                  <h4>{el.name} #{el.tokenId}</h4>
+                  <h4>
+                    {el.name} #{el.tokenId}
+                  </h4>
 
                   <div
                     className={Style.NFTCard_box_update_details_price_box_box}
@@ -99,7 +102,8 @@ const NFTCard = ({ NFTData }) => {
                 <BsImages />
               </div>
             </div>
-          </div>      
+          </div>
+        </Link>      
         ))}
     </div>
   )

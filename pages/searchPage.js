@@ -70,7 +70,7 @@ const searchPage = () => {
         onClearSearch={onClearSearch}
       />
       <Filter />
-      <NFTCardTwo NFTData={nfts} />
+      {nfts.length == 0 ? <Loader /> : <NFTCardTwo NFTData={nfts} />}
       <Slider />
       <Brand />
     </div>
