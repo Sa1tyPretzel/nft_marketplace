@@ -19,7 +19,7 @@ import {
   Video,
   Loader,
 } from "../components/componentsindex";
-//import { getTopCreators } from "../TopCreators/TopCreators";
+import { getTopCreators } from "../TopCreators/TopCreators";
 
 //IMPORTING CONTRCT DATA
 import { NFTMarketplaceContext } from "../Context/NFTMarketplaceContext";
@@ -48,7 +48,7 @@ const Home = () => {
 
   //CREATOR LIST
 
-  //const creators = getTopCreators(nfts);
+  const creators = getTopCreators(nfts);
   
   return (
     <div className={Style.homePage}>
@@ -60,11 +60,15 @@ const Home = () => {
          paragraph="Discover the most outstanding NFTs in all topics of life."
        />
       <AudioLive />
-      <Title
+      {/* <Title
          heading="New Collection"
          paragraph="Discover the most outstanding NFTs in all topics of life."
-       />
-      <FollowerTab />
+       /> */}
+      {creators.length == 0 ? (
+        <Loader />
+      ) : (
+        <FollowerTab TopCreator={creators} />
+      )}
       {/*<Title
         heading="Explore NFTs Video"
         paragraph="Click on play icon and enjoy NFTs video"

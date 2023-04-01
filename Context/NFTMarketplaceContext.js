@@ -58,6 +58,8 @@ export const NFTMarketplaceProvider = ({ children }) => {
     const titleData = "Discover, collect, and sell NFTs";
 
     //------USESTATE
+    const [error, setError] = useState("");
+    const [openError, setOpenError] = useState(false);
     const [currentAccount, setCurrentAccount] = useState("");
     const router = useRouter();
     //---CHECK IF WALLET IS CONNECTD
@@ -65,10 +67,7 @@ export const NFTMarketplaceProvider = ({ children }) => {
   const checkIfWalletConnected = async () => {
     try {
       if (!window.ethereum)
-        return 
-        //setOpenError(true), 
-        //setError("Install MetaMask");
-        console.log("Install Metamask");
+        return setOpenError(true), setError("Install MetaMask");
 
       const accounts = await window.ethereum.request({
         method: "eth_accounts",
@@ -83,12 +82,12 @@ export const NFTMarketplaceProvider = ({ children }) => {
         console.log("No account");
       }
 
-      //const provider = new ethers.providers.Web3Provider(window.ethereum);
-      //const getBalance = await provider.getBalance(accounts[0]);
-      //const bal = ethers.utils.formatEther(getBalance);
+      const provider = new ethers.providers.Web3Provider(window.ethereum);
+      const getBalance = await provider.getBalance(accounts[0]);
+      const bal = ethers.utils.formatEther(getBalance);
       setAccountBalance(bal);
     } catch (error) {
-       console.log("Something wrong while connecting to wallet");
+      // setError("Something wrong while connecting to wallet");
       // setOpenError(true);
       console.log("not connected");
     }
@@ -124,24 +123,21 @@ export const NFTMarketplaceProvider = ({ children }) => {
   };
   
      //---UPLOAD TO IPFS FUNCTION
-    const uploadToIPFS = async (file) => {
+     const uploadToIPFS = async (file) => {
       try {
         const added = await client.add({ content: file });
         const url = `${subdomain}/ipfs/${added.path}`;
         return url;
       } catch (error) {
-        //setError("Error Uploading to IPFS");
-        //setOpenError(true);
-        console.log("Error Uploading to IPFS");
+        setError("Error Uploading to IPFS");
+        setOpenError(true);
     }
   };
 
   //---CREATENFT FUNCTION
   const createNFT = async (name, price, image, description, router) => {
     if (!name || !description || !price || !image)
-      return 
-      //setError("Data Is Missing"), 
-      //setOpenError(true);
+      return setError("Data Is Missing"), setOpenError(true);
 
     const data = JSON.stringify({ name, description, image });
 
@@ -152,8 +148,8 @@ export const NFTMarketplaceProvider = ({ children }) => {
       await createSale(url, price);
       router.push("/searchPage");
     } catch (error) {
-      console.log ("Error while creating NFT");
-      //setOpenError(true);
+      setError("Error while creating NFT");
+      setOpenError(true);
     }
   };
 
@@ -176,12 +172,11 @@ export const NFTMarketplaceProvider = ({ children }) => {
           });
 
       await transaction.wait();
-      router.push('/searchPage');
       console.log(transaction);
     } catch (error) {
-      //setError("error while creating sale");
-      //setOpenError(true);
-      console.log("error while creating sale");
+      setError("error while creating sale");
+      setOpenError(true);
+      console.log(error);
     }
   };
 
@@ -303,8 +298,8 @@ export const NFTMarketplaceProvider = ({ children }) => {
       await transaction.wait();
       router.push("/author");
     } catch (error) {
-      console.log("Error While buying NFT");
-      //setOpenError(true);
+      setError("Error While buying NFT");
+      setOpenError(true);
     }
   };
   return (
@@ -318,7 +313,10 @@ export const NFTMarketplaceProvider = ({ children }) => {
         buyNFT,
         createSale,
         currentAccount, 
-        titleData, 
+        titleData,
+        setOpenError,
+        openError,
+        error, 
         }}>
         {children}
     </NFTMarketplaceContext.Provider>
