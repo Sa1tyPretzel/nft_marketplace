@@ -23,6 +23,7 @@ const searchPage = () => {
     try {
       // if (currentAccount) {
       fetchNFTs().then((items) => {
+        // if(!items) return;
         setNfts(items.reverse());
         setNftsCopy(items);
         console.log(nfts);
