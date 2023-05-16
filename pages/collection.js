@@ -23,6 +23,8 @@ const collection = () => {
     images.nft_image_1,
     images.nft_image_2,
   ]
+
+  //console.log(collectionArray);
   return (
     <div className={Style.collection}>
       <Banner bannerImage={images.creatorbackground1} />
