@@ -49,7 +49,7 @@ const DaysComponents = ({ el, i }) => {
         </div>
 
         <div className={Style.daysComponent_box_title}>
-          <h2>Amazing Collection</h2>
+          <h2>Collection #1</h2>
           <div className={Style.daysComponent_box_title_info}>
             <div className={Style.daysComponent_box_title_info_profile}>
               <Image

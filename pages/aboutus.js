@@ -7,28 +7,28 @@ import { Brand } from "../components/componentsindex";
 import images from "../img";
 
 const aboutus = () => {
-  const founderArray = [
-    {
-      name: "Niamh O'Shea",
-      position: "Co-founder and Chief Executive",
-      images: images.founder1,
-    },
-    {
-      name: "Danien Jame",
-      position: "Co-founder and Chief Executive",
-      images: images.founder2,
-    },
-    {
-      name: "Orla Dwyer",
-      position: "Co-founder, Chairman",
-      images: images.founder3,
-    },
-    {
-      name: "Dara Frazier",
-      position: "Co-Founder, Chief Strategy Officer",
-      images: images.founder4,
-    },
-  ];
+  // const founderArray = [
+  //   {
+  //     name: "Niamh O'Shea",
+  //     position: "Co-founder and Chief Executive",
+  //     images: images.founder1,
+  //   },
+  //   {
+  //     name: "Danien Jame",
+  //     position: "Co-founder and Chief Executive",
+  //     images: images.founder2,
+  //   },
+  //   {
+  //     name: "Orla Dwyer",
+  //     position: "Co-founder, Chairman",
+  //     images: images.founder3,
+  //   },
+  //   {
+  //     name: "Dara Frazier",
+  //     position: "Co-Founder, Chief Strategy Officer",
+  //     images: images.founder4,
+  //   },
+  // ];
 
   const factsArray = [
     {
@@ -69,7 +69,7 @@ const aboutus = () => {
           </p>
         </div>
 
-        <div className={Style.aboutus_box_founder}>
+        {/* <div className={Style.aboutus_box_founder}>
           <div className={Style.aboutus_box_founder_box}>
             {founderArray.map((el, i) => (
               <div className={Style.aboutus_box_founder_box_img}>
@@ -85,7 +85,7 @@ const aboutus = () => {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
         <div className={Style.aboutus_box_title}>
           <h2>🚀 Fast Facts</h2>

@@ -20,7 +20,7 @@ const Form = () => {
                 <label htmlFor="name">Username</label>
                 <input
                   type="text"
-                  placeholder="JW"
+                  placeholder="Enter Username*"
                   className={Style.Form_box_input_userName}
                 />
               </div>
@@ -42,7 +42,7 @@ const Form = () => {
                   id=""
                   cols="30"
                   rows="6"
-                  placeholder="something about yourself in few words"
+                  placeholder="Add Description"
                 ></textarea>
               </div>
     

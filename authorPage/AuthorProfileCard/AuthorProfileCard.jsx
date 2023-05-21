@@ -54,7 +54,7 @@ const AuthorProfileCard = ({ currentAccount }) => {
       <div className={Style.AuthorProfileCard_box}>
         <div className={Style.AuthorProfileCard_box_img}>
           <Image
-            src={images.nft_image_1}
+            src={images.nft_1}
             className={Style.AuthorProfileCard_box_img_img}
             alt="NFT IMAGES"
             width={220}
@@ -64,7 +64,7 @@ const AuthorProfileCard = ({ currentAccount }) => {
 
         <div className={Style.AuthorProfileCard_box_info}>
           <h2>
-            Dony Herrera{""}{" "}
+            Salty Pretzel{""}{" "}
             <span>
               <MdVerified />
             </span>{" "}
