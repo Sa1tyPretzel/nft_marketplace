@@ -154,7 +154,7 @@ const UloadNFT = ({ uploadToIPFS, createNFT }) => {
         </div>
 
         <div className={formStyle.Form_box_input_social}>
-          <div className={formStyle.Form_box_input}>
+          {/* <div className={formStyle.Form_box_input}>
             <label htmlFor="Royalties">Royalties</label>
             <div className={formStyle.Form_box_input_box}>
               <div className={formStyle.Form_box_input_box_icon}>
@@ -192,7 +192,7 @@ const UloadNFT = ({ uploadToIPFS, createNFT }) => {
                 onChange={(e) => setProperties(e.target.value)}
               />
             </div>
-          </div>
+          </div> */}
 
           <div className={formStyle.Form_box_input}>
             <label htmlFor="Price">Price</label>
