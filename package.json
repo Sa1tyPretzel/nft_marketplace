@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "startHardhat": "npx hardhat node",
+    "deployScript": "npx hardhat run scripts/deploy.js --network localhost"
   },
   "dependencies": {
     "@openzeppelin/contracts": "^4.8.2",
